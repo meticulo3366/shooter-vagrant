@@ -16,9 +16,7 @@ if [ ! -f $TOUCH_FILE ]; then
   apt-get upgrade -y
 
   # Installing required packages.
-  apt-get install vim bzr git make curl -y
-
-  curl http://nginx.org/keys/nginx_signing.key
+  apt-get install vim bzr git make curl nginx -y
 
   # Getting MongoDB
   apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10

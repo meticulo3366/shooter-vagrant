@@ -1,0 +1,4 @@
+*.swp
+.vagrant/
+shooter-server/
+shooter-html5/

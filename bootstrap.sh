@@ -7,16 +7,17 @@ export GO_URL=https://storage.googleapis.com/golang/go1.2.2.linux-amd64.tar.gz
 if [ ! -f $TOUCH_FILE ]; then
 
   # For nginx > 1.3
-  echo "deb http://nginx.org/packages/ubuntu/ precise nginx" >> /etc/apt/sources.list
-  echo "deb-src http://nginx.org/packages/ubuntu/ precise nginx" >> /etc/apt/sources.list
-  curl http://nginx.org/keys/nginx_signing.key | apt-key add -
+  echo "deb http://nginx.org/packages/ubuntu/ precise nginx" | tee /etc/apt/sources.list.d/nginx.list
 
   # Updating system.
   apt-get update
   apt-get upgrade -y
 
   # Installing required packages.
-  apt-get install vim bzr git make curl nginx -y
+  apt-get install -y vim bzr git make curl
+  curl http://nginx.org/keys/nginx_signing.key | apt-key add -
+
+  apt-get install -y nginx
 
   # Getting MongoDB
   apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
